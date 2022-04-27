@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
         "standard"
     ],
     "parser": "@typescript-eslint/parser",
@@ -21,6 +21,9 @@
     ],
     "rules": {
         "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off"
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "import/no-unresolved": "error"
     }
 }
