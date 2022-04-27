@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/jsx-runtime",
-        "standard"
+        "standard",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
