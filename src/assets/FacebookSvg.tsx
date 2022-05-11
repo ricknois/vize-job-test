@@ -7,7 +7,7 @@ export default function Facebook() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_4_77)">
+      <g clipPath="url(#clip0_4_77)">
         <path
           d="M6.66667 15.9111C2.88889 15.2444 0 11.9556 0 8C0 3.6 3.6 0 8 0C12.4 0 16 3.6 16 8C16 11.9556 13.1111 15.2444 9.33333 15.9111L8.88889 15.5556H7.11111L6.66667 15.9111Z"
           fill="url(#paint0_linear_4_77)"
@@ -26,8 +26,8 @@ export default function Facebook() {
           y2="0"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#0062E0" />
-          <stop offset="1" stop-color="#19AFFF" />
+          <stop stopColor="#0062E0" />
+          <stop offset="1" stopColor="#19AFFF" />
         </linearGradient>
         <clipPath id="clip0_4_77">
           <rect width="16" height="16" fill="white" />

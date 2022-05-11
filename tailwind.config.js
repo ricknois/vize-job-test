@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         back1: "#1E293B",
         back2: "#334155",
+        back3: "#000113",
         font: "#94A3B8",
         input: "#CCCCCC",
         white: "#FFFFFF",
