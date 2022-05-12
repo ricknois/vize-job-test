@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Button, Input } from "../../components";
 import { fetchSign } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +12,9 @@ export default function Login() {
 
   async function fetchRegister() {
     const data = await fetchSign(email, password, "registration", name);
-    if (data.message !== "success") {
+    if (data.message === "success") {
+      navigate("/");
+    } else {
       setMessage(data.message);
     }
   }

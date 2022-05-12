@@ -1,9 +1,9 @@
-import { Login } from "./pages";
+import Routes from "./routes";
 
 function App() {
   return (
     <>
-      <Login />
+      <Routes />
     </>
   );
 }

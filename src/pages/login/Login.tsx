@@ -2,15 +2,19 @@ import { useState } from "react";
 import { Button, Input } from "../../components";
 import { GoogleSvg, FacebookSvg } from "../../assets";
 import { fetchSign } from "../../utils/api";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(true);
 
   async function fetchLogin() {
     const data = await fetchSign(email, password, "login");
-    if (data.message !== "success") {
+    if (data.message === "success") {
+      navigate("/");
+    } else {
       setIsValid(false);
     }
   }
@@ -32,7 +36,7 @@ export default function Login() {
         </div>
 
         <Button
-          title="Entrar"
+          title="Log in"
           onPress={() => fetchLogin()}
           isDisabled={!email && !password}
         />
@@ -51,9 +55,12 @@ export default function Login() {
             onPress={() => console.log("Facebook")}
           />
         </div>
-        <span className="text-sm text-font mt-10 mb-4 text-center">
-          Don’t have account? Create now
-        </span>
+        <div className="flex mt-5 items-center justify-center space-x-1">
+          <span className="text-sm text-font">Don’t have account?</span>
+          <Link to="/register" className="text-sm text-white">
+            Create now
+          </Link>
+        </div>
       </div>
     </div>
   );
