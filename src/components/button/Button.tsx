@@ -3,10 +3,11 @@ import { ReactElement } from "react";
 interface Props {
   title: string;
   Icon?: () => ReactElement;
+  isDisabled?: boolean;
   onPress: () => void;
 }
 
-export default function Button({ title, Icon, onPress }: Props) {
+export default function Button({ title, Icon, onPress, isDisabled }: Props) {
   return (
     <button
       className={
@@ -15,6 +16,7 @@ export default function Button({ title, Icon, onPress }: Props) {
           : "bg-back1 w-full h-10 flex items-center justify-center rounded"
       }
       onClick={() => onPress()}
+      disabled={isDisabled}
     >
       {Icon && (
         <span className="mr-2">
