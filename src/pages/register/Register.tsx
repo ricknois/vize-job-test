@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input } from "../../components";
 import { fetchSign } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import { getLocalStorage } from "../../utils/localStorage";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -9,6 +10,13 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const token = getLocalStorage();
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
 
   async function fetchRegister() {
     const data = await fetchSign(email, password, "registration", name);

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input } from "../../components";
 import { GoogleSvg, FacebookSvg } from "../../assets";
 import { fetchSign } from "../../utils/api";
 import { Link, useNavigate } from "react-router-dom";
+import { getLocalStorage, setLocalStorage } from "../../utils/localStorage";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,10 +11,18 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(true);
 
+  useEffect(() => {
+    const token = getLocalStorage();
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
+
   async function fetchLogin() {
     const data = await fetchSign(email, password, "login");
     if (data.message === "success") {
-      navigate("/");
+      setLocalStorage(data.data?.Token || "");
+      navigate("/home");
     } else {
       setIsValid(false);
     }
