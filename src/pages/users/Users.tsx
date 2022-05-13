@@ -3,6 +3,7 @@ import { UsersData } from "../../utils/api/apiInterfaces";
 import { fetchUsers } from "../../utils/api/";
 import { clearLocalStorage, getLocalStorage } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components";
 
 export default function Users() {
   const navigate = useNavigate();
@@ -43,6 +44,11 @@ export default function Users() {
     }
   }, [isLoading]);
 
+  function logOut() {
+    clearLocalStorage();
+    navigate("/");
+  }
+
   return (
     <div>
       {isLoading ? (
@@ -51,6 +57,11 @@ export default function Users() {
         <div className="h-screen">
           <div className="flex justify-center items-center h-1/3">
             <span className="text-white text-3xl font-extrabold">Users</span>
+            <span className="absolute right-0 h-1/3 flex flex-col">
+              <span className="border-2 border-back3 p-1">
+                <Button title="Logout" onPress={logOut} />
+              </span>
+            </span>
           </div>
           <div>
             <table className="w-full text-base text-center text-font">
