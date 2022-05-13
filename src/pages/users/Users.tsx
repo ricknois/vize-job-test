@@ -54,16 +54,16 @@ export default function Users() {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className="h-screen">
+        <div className="h-screen md:mx-10 lg:mx-32">
           <div className="flex justify-center items-center h-1/3">
             <span className="text-white text-3xl font-extrabold">Users</span>
             <span className="absolute right-0 h-1/3 flex flex-col">
-              <span className="border-2 border-back3 p-1">
+              <span className="p-2">
                 <Button title="Logout" onPress={logOut} />
               </span>
             </span>
           </div>
-          <div>
+          <div className="border-x-2 border-back3">
             <table className="w-full text-base text-center text-font">
               <thead className="text-lg text-font uppercase bg-back3">
                 <tr>

@@ -32,12 +32,12 @@ export default function Login() {
   }
 
   return (
-    <div className="bg-back1 h-screen flex flex-col">
-      <div className="flex justify-center items-center h-1/3">
+    <div className="bg-back1 h-screen flex flex-col md:flex-row">
+      <div className="flex justify-center items-center h-1/3 md:h-screen md:w-1/3">
         <span className="text-white text-3xl font-extrabold">Login</span>
       </div>
 
-      <div className="flex flex-1 flex-col bg-back3 px-8">
+      <div className="flex flex-1 flex-col bg-back3 px-8 md:h-screen md:justify-center">
         <span className="text-red-600 text-center mt-2 h-6">{message}</span>
 
         <div className="mb-6">
