@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login, Register } from "../pages";
+import { Login, Register, Users } from "../pages";
 
 export default function Router() {
   return (
@@ -7,6 +7,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Users />} />
       </Routes>
     </BrowserRouter>
   );
