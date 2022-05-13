@@ -19,12 +19,15 @@ export default function Login() {
   }, []);
 
   async function fetchRegister() {
-    const data = await fetchSign(email, password, "registration", name);
-    if (data.message === "success") {
-      navigate("/");
-    } else {
-      setMessage(data.message);
-    }
+    await fetchSign(email, password, "registration", name)
+      .then((data) => {
+        if (data.message === "success") {
+          navigate("/");
+        } else {
+          setMessage(data.message || "Try again later");
+        }
+      })
+      .catch(() => setMessage("Try again later"));
   }
 
   return (

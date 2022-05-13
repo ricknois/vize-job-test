@@ -9,7 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(true);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const token = getLocalStorage();
@@ -19,13 +19,16 @@ export default function Login() {
   }, []);
 
   async function fetchLogin() {
-    const data = await fetchSign(email, password, "login");
-    if (data.message === "success") {
-      setLocalStorage(data.data?.Token || "");
-      navigate("/home");
-    } else {
-      setIsValid(false);
-    }
+    await fetchSign(email, password, "login")
+      .then((data) => {
+        if (data.message === "success") {
+          setLocalStorage(data.data?.Token || "");
+          navigate("/home");
+        } else {
+          setMessage(data.message || "Try again later");
+        }
+      })
+      .catch(() => setMessage("Try again later"));
   }
 
   return (
@@ -35,9 +38,7 @@ export default function Login() {
       </div>
 
       <div className="flex flex-1 flex-col bg-back3 px-8">
-        <span className="text-red-600 text-center mt-2 h-6">
-          {!isValid && "Invalid user or password"}
-        </span>
+        <span className="text-red-600 text-center mt-2 h-6">{message}</span>
 
         <div className="mb-6">
           <Input label="Email" setInput={setEmail} />
